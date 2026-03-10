@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <title>ColorSoup - Explore Palettes</title>
+</head>
+<body>
+  <!-- decorative background blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-teal" data-name="motion.div" data-node-id="22:352"></div>
+    <div class="blob blob-purple" data-name="motion.div" data-node-id="22:353"></div>
+    <div class="blob blob-orange" data-name="motion.div" data-node-id="22:354"></div>
+  </div>
+
+  <!-- navigation -->
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="index.html" class="logo logo-link">
+        <div class="logo-button">
+          <img src="https://www.figma.com/api/mcp/asset/55b6ffff-f499-4765-b4e3-03343132c840" alt="Palette" class="logo-icon-image" />
+        </div>
+        <span class="logo-text">Color<span class="logo-highlight">Soup</span></span>
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="gallery.html" class="nav-link-active">
+            <img src="https://www.figma.com/api/mcp/asset/17121edc-b662-4e2b-855e-cfca0b43fb47" alt="" class="nav-icon" />
+            Explore Palettes
+          </a>
+        </li>
+        <li>
+          <a href="generator.html">
+            <img src="https://www.figma.com/api/mcp/asset/20d98e14-5264-496a-9c47-e6759f137884" alt="" class="nav-icon" />
+            Generate
+          </a>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="generator.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- palette gallery section -->
+  <section class="section palette-gallery" id="gallery">
+    <div class="container">
+      <!-- Header -->
+      <div class="gallery-header">
+        <h2 class="section-title">Explore <span class="highlight-primary">Palettes</span></h2>
+        <p class="section-subtitle">Browse trending color combinations curated by the creative community</p>
+      </div>
+
+      <!-- Search and Filters -->
+      <div class="gallery-controls">
+        <div class="search-box">
+          <img src="https://www.figma.com/api/mcp/asset/18bc8386-b29d-4a76-8a19-d7b9a61a6486" alt="Search" class="search-icon" />
+          <input type="text" placeholder="Search palettes..." />
+        </div>
+
+        <div class="filter-tags">
+          <span class="filter-label">
+            <img src="https://www.figma.com/api/mcp/asset/21b62dab-d6a0-47ce-ba91-19a97e7d23e2" alt="Filter" class="filter-icon" />
+            Filter:
+          </span>
+          <button class="tag-btn">warm</button>
+          <button class="tag-btn">cool</button>
+          <button class="tag-btn">pastel</button>
+          <button class="tag-btn">vibrant</button>
+          <button class="tag-btn">bold</button>
+          <button class="tag-btn">shades</button>
+          <button class="tag-btn">neutral</button>
+          <button class="tag-btn">minimal</button>
+          <button class="tag-btn">natural</button>
+          <button class="tag-btn">playful</button>
+        </div>
+      </div>
+
+      <!-- Palettes Grid -->
+      <div class="palettes-grid">
+        <!-- Tropical Sunset -->
+        <div class="palette-card">
+          <div class="palette-strip">
+            <div class="color-swatch" style="background-color: #264653;"></div>
+            <div class="color-swatch" style="background-color: #2a9d8f;"></div>
+            <div class="color-swatch" style="background-color: #e9c46a;"></div>
+            <div class="color-swatch" style="background-color: #f4a261;"></div>
+            <div class="color-swatch" style="background-color: #e76f51;"></div>
+          </div>
+          <div class="palette-info">
+            <div class="palette-header">
+              <h3 class="palette-title">Tropical Sunset</h3>
+              <div class="palette-actions">
+                <button class="action-btn" data-action="like">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+                <button class="action-btn" data-action="copy">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </div>
+            <div class="palette-tags">
+              <span class="tag">warm</span>
+              <span class="tag">vibrant</span>
+              <span class="like-count">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                234
+              </span>
+            </div>
+            <div class="palette-colors">
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #264653;"></div>
+                <span class="color-hex">#264653</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #2a9d8f;"></div>
+                <span class="color-hex">#2A9D8F</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #e9c46a;"></div>
+                <span class="color-hex">#E9C46A</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #f4a261;"></div>
+                <span class="color-hex">#F4A261</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #e76f51;"></div>
+                <span class="color-hex">#E76F51</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Olive Mist -->
+        <div class="palette-card">
+          <div class="palette-strip">
+            <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+            <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+            <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+            <div class="color-swatch" style="background-color: #808080;"></div>
+          </div>
+          <div class="palette-info">
+            <div class="palette-header">
+              <h3 class="palette-title">Olive Mist</h3>
+              <div class="palette-actions">
+                <button class="action-btn" data-action="like">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+                <button class="action-btn" data-action="copy">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </div>
+            <div class="palette-tags">
+              <span class="tag">neutral</span>
+              <span class="tag">minimal</span>
+              <span class="like-count">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                128
+              </span>
+            </div>
+            <div class="palette-colors">
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #d3d3d3;"></div>
+                <span class="color-hex">#D3D3D3</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #c0c0c0;"></div>
+                <span class="color-hex">#C0C0C0</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #a9a9a9;"></div>
+                <span class="color-hex">#A9A9A9</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #808080;"></div>
+                <span class="color-hex">#808080</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rose Garden -->
+        <div class="palette-card">
+          <div class="palette-strip">
+            <div class="color-swatch" style="background-color: #fbbfb0;"></div>
+            <div class="color-swatch" style="background-color: #f5a9a9;"></div>
+            <div class="color-swatch" style="background-color: #e99bad;"></div>
+            <div class="color-swatch" style="background-color: #9b7f8f;"></div>
+          </div>
+          <div class="palette-info">
+            <div class="palette-header">
+              <h3 class="palette-title">Rose Garden</h3>
+              <div class="palette-actions">
+                <button class="action-btn" data-action="like">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+                <button class="action-btn" data-action="copy">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </div>
+            <div class="palette-tags">
+              <span class="tag">pastel</span>
+              <span class="tag">warm</span>
+              <span class="like-count">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                312
+              </span>
+            </div>
+            <div class="palette-colors">
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #fbbfb0;"></div>
+                <span class="color-hex">#FBBFB0</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #f5a9a9;"></div>
+                <span class="color-hex">#F5A9A9</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #e99bad;"></div>
+                <span class="color-hex">#E99BAD</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #9b7f8f;"></div>
+                <span class="color-hex">#9B7F8F</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bold Statement -->
+        <div class="palette-card">
+          <div class="palette-strip">
+            <div class="color-swatch" style="background-color: #0a1829;"></div>
+            <div class="color-swatch" style="background-color: #c41e3a;"></div>
+            <div class="color-swatch" style="background-color: #ff8c00;"></div>
+            <div class="color-swatch" style="background-color: #ffd700;"></div>
+            <div class="color-swatch" style="background-color: #f5f5dc;"></div>
+          </div>
+          <div class="palette-info">
+            <div class="palette-header">
+              <h3 class="palette-title">Bold Statement</h3>
+              <div class="palette-actions">
+                <button class="action-btn" data-action="like">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+                <button class="action-btn" data-action="copy">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </div>
+            <div class="palette-tags">
+              <span class="tag">bold</span>
+              <span class="tag">vibrant</span>
+              <span class="like-count">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                456
+              </span>
+            </div>
+            <div class="palette-colors">
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #0a1829;"></div>
+                <span class="color-hex">#0A1829</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #c41e3a;"></div>
+                <span class="color-hex">#C41E3A</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #ff8c00;"></div>
+                <span class="color-hex">#FF8C00</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #ffd700;"></div>
+                <span class="color-hex">#FFD700</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #f5f5dc;"></div>
+                <span class="color-hex">#F5F5DC</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forest Earth -->
+        <div class="palette-card">
+          <div class="palette-strip">
+            <div class="color-swatch" style="background-color: #355539;"></div>
+            <div class="color-swatch" style="background-color: #55771d;"></div>
+          </div>
+          <div class="palette-info">
+            <div class="palette-header">
+              <h3 class="palette-title">Forest Earth</h3>
+              <div class="palette-actions">
+                <button class="action-btn" data-action="like">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+                <button class="action-btn" data-action="copy">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </div>
+            <div class="palette-tags">
+              <span class="tag">natural</span>
+              <span class="tag">shades</span>
+              <span class="like-count">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                189
+              </span>
+            </div>
+            <div class="palette-colors">
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #355539;"></div>
+                <span class="color-hex">#355539</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #55771d;"></div>
+                <span class="color-hex">#55771D</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cotton Candy -->
+        <div class="palette-card">
+          <div class="palette-strip">
+            <div class="color-swatch" style="background-color: #dfc5e8;"></div>
+            <div class="color-swatch" style="background-color: #f0d5e8;"></div>
+            <div class="color-swatch" style="background-color: #ffc0e0;"></div>
+            <div class="color-swatch" style="background-color: #87ceeb;"></div>
+          </div>
+          <div class="palette-info">
+            <div class="palette-header">
+              <h3 class="palette-title">Cotton Candy</h3>
+              <div class="palette-actions">
+                <button class="action-btn" data-action="like">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+                <button class="action-btn" data-action="copy">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </div>
+            <div class="palette-tags">
+              <span class="tag">pastel</span>
+              <span class="tag">playful</span>
+              <span class="like-count">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#99a1af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                567
+              </span>
+            </div>
+            <div class="palette-colors">
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #dfc5e8;"></div>
+                <span class="color-hex">#DFC5E8</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #f0d5e8;"></div>
+                <span class="color-hex">#F0D5E8</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #ffc0e0;"></div>
+                <span class="color-hex">#FFC0E0</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #87ceeb;"></div>
+                <span class="color-hex">#87CEEB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="footer" data-node-id="22:399">
+    <!-- CTA section inside footer -->
+    <div class="footer-cta" data-node-id="22:401">
+      <div class="container">
+        <h3 class="footer-cta-title">Ready to dive into color?</h3>
+        <p class="footer-cta-subtitle">Start your palette journey now.</p>
+        <button class="btn btn-primary btn-lg">Start Creating Colors</button>
+      </div>
+    </div>
+
+    <!-- Footer content -->
+    <div class="footer-content" data-node-id="22:408">
+      <div class="container footer-container">
+        <!-- Logo and description -->
+        <div class="footer-col">
+          <div class="footer-logo">
+            <div class="logo-icon">
+              <img src="https://www.figma.com/api/mcp/asset/8405d861-100b-4a39-bebd-5254fe3fa550" alt="Palette" />
+            </div>
+            <span>Color<span class="footer-logo-highlight">Soup</span></span>
+          </div>
+          <p class="footer-description">AI-powered color palette generator. Create, explore, and share beautiful color combinations.</p>
+        </div>
+
+        <!-- Product links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Product</h4>
+          <ul class="footer-links">
+            <li><a href="#">Generate Palettes</a></li>
+            <li><a href="#">Explore</a></li>
+            <li><a href="#">AI Assistant</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#">Color Theory</a></li>
+            <li><a href="#">Design Blog</a></li>
+            <li><a href="#">API Docs</a></li>
+          </ul>
+        </div>
+
+        <!-- Social links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Connect</h4>
+          <div class="footer-social">
+            <a href="#" class="social-icon">
+              <img src="https://www.figma.com/api/mcp/asset/ef3c22bc-efe1-4efb-acac-4a93ec46db56" alt="Twitter" />
+            </a>
+            <a href="#" class="social-icon">
+              <img src="https://www.figma.com/api/mcp/asset/d0b5319f-5ca6-45e8-8bff-b09e6f08ce57" alt="GitHub" />
+            </a>
+            <a href="#" class="social-icon">
+              <img src="https://www.figma.com/api/mcp/asset/e0835428-8c93-48e9-b400-e7cafc90fc1d" alt="Instagram" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p class="copyright">© 2026 ColorSoup. All rights reserved.</p>
+        <p class="made-with">Made with <img src="https://www.figma.com/api/mcp/asset/14960d1c-c28c-49b5-a9eb-df938077d190" alt="Heart" class="heart-icon" /> for creators</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>

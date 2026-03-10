@@ -1,36 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <title>ColorSoup</title>
 </head>
 <body>
- <div class="top-container">
-    <h1 class="heading-text">Color Generator App</h1>
-    <p class="paragraph-text">Generate random colors with the click of a button</p>
- </div>
+  <!-- decorative background blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-teal" data-name="motion.div" data-node-id="22:352"></div>
+    <div class="blob blob-purple" data-name="motion.div" data-node-id="22:353"></div>
+    <div class="blob blob-orange" data-name="motion.div" data-node-id="22:354"></div>
+  </div>
 
+  <!-- navigation -->
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="#" class="logo logo-link">
+        <div class="logo-button">
+          <img src="https://www.figma.com/api/mcp/asset/55b6ffff-f499-4765-b4e3-03343132c840" alt="Palette" class="logo-icon-image" />
+        </div>
+        <span class="logo-text">Color<span class="logo-highlight">Soup</span></span>
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="gallery.html">
+            <img src="https://www.figma.com/api/mcp/asset/17121edc-b662-4e2b-855e-cfca0b43fb47" alt="" class="nav-icon" />
+            Explore Palettes
+          </a>
+        </li>
+        <li>
+          <a href="generator.html">
+            <img src="https://www.figma.com/api/mcp/asset/20d98e14-5264-496a-9c47-e6759f137884" alt="" class="nav-icon" />
+            Generate
+          </a>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="generator.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </nav>
 
- <div class="bottom-container">
+  <!-- hero -->
+  <header id="generate" class="hero">
+    <div class="container hero-container">
+      <!-- Announcement banner -->
+      <div class="hero-announcement" data-name="motion.div" data-node-id="22:356">
+        <div class="announcement-badge">
+          <img src="https://www.figma.com/api/mcp/asset/c7851a32-59e3-48cd-8ddf-7fe6d925c327" alt="Sparkles" class="announcement-icon" />
+          <span class="announcement-text">New: Color Harmony Modes now available</span>
+          <a href="#" class="announcement-link">Try it →</a>
+        </div>
+      </div>
 
-  <div class="generated-colors-container" >
-   <div class="first-color-box" id="first-color-box">
-    <h1 id="first-hex-code">HEX CODE</h1>
-   </div>
-   <div class="second-color-box" id="second-color-box">
-    <h1 id="second-hex-code">HEX CODE</h1>
-   </div>   
-   <div class="third-color-box" id="third-color-box">
-    <h1 id="third-hex-code">HEX CODE</h1>
-   </div>
-  
- </div>
+      <!-- Title -->
+      <h1 class="hero-title" data-name="motion.h1" data-node-id="22:367">
+        <span class="hero-title-main">Generate Stunning Color Palettes with </span>
+        <span class="hero-title-highlight">
+          AI-Driven Creativity
+          <div class="hero-title-underline"></div>
+        </span>
+      </h1>
 
- <button class="button" id="generate-colors-button">Generate Colors</button>
+      <!-- Subtitle -->
+      <p class="hero-subtitle" data-name="motion.p" data-node-id="22:372">
+        Create, explore, and refine beautiful colors in playful soup-inspired
+        palettes. Save & share your favorite combinations.
+      </p>
 
+      <!-- CTA Buttons -->
+      <div class="hero-cta" data-name="motion.div" data-node-id="22:374">
+        <a href="generator.html" class="btn btn-primary btn-lg generate-btn">
+          <img src="https://www.figma.com/api/mcp/asset/13329df7-5175-4033-a68e-be6a169b4d35" alt="Sparkles" class="btn-icon" />
+          <span>Start Creating Colors</span>
+        </a>
+        <a href="gallery.html" class="btn btn-secondary btn-lg">
+          <span>Explore Gallery</span>
+          <img src="https://www.figma.com/api/mcp/asset/4c6d60f8-d083-4ae3-9d26-2789202c1991" alt="Arrow" class="btn-icon" />
+        </a>
+      </div>
 
-  <script src="./index.js"></script>
+      <!-- Color spheres -->
+      <div class="hero-balls">
+        <div class="sphere" data-color="0095b6" data-name="sphere-teal">
+          <div class="sphere-container">
+            <div class="sphere-highlight"></div>
+            <div class="sphere-inner-shadow"></div>
+          </div>
+        </div>
+        <div class="sphere" data-color="e76f51" data-name="sphere-coral">
+          <div class="sphere-container">
+            <div class="sphere-highlight"></div>
+            <div class="sphere-inner-shadow"></div>
+          </div>
+        </div>
+        <div class="sphere" data-color="f4a261" data-name="sphere-orange">
+          <div class="sphere-container">
+            <div class="sphere-highlight"></div>
+            <div class="sphere-inner-shadow"></div>
+          </div>
+        </div>
+        <div class="sphere" data-color="2a9d8f" data-name="sphere-teal-green">
+          <div class="sphere-container">
+            <div class="sphere-highlight"></div>
+            <div class="sphere-inner-shadow"></div>
+          </div>
+        </div>
+        <div class="sphere" data-color="9b59b6" data-name="sphere-purple">
+          <div class="sphere-container">
+            <div class="sphere-highlight"></div>
+            <div class="sphere-inner-shadow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- features section -->
+  <section id="features" class="section features">
+    <div class="container">
+      <p class="section-pretitle">Features</p>
+      <h2 class="section-title">
+        Everything you need to master color
+      </h2>
+      <p class="section-subtitle">
+        From random inspiration to precise adjustments, ColorSoup gives you the
+        tools to create perfect palettes in seconds.
+      </p>
+      <div class="cards grid">
+        <div class="card">
+          <div class="card-icon">
+            <img
+              src="https://www.figma.com/api/mcp/asset/db305dd0-a26c-40e7-a4c9-801022a3601c"
+              alt="Icon"
+            />
+          </div>
+          <h3 class="card-title">Interactive Color Bowls</h3>
+          <p class="card-text">
+            Visualize colors like delicious creative soup. Mix, match, and blend
+            ingredients to find the perfect taste for your design.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <img
+              src="https://www.figma.com/api/mcp/asset/1b2dde30-765e-4213-84c3-91a2a613e78d"
+              alt="Icon"
+            />
+          </div>
+            <h3 class="card-title">Smart Harmony Modes</h3>
+            <p class="card-text">
+              Generate palettes using proven color theory. Choose from Analogous, Complementary, Triadic, Split-Complementary, Tetradic, and more.
+            </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <img
+              src="https://www.figma.com/api/mcp/asset/b2a75044-d16f-43f7-a27d-85a6347b8678"
+              alt="Icon"
+            />
+          </div>
+          <h3 class="card-title">Explore Palettes Gallery</h3>
+          <p class="card-text">
+            Browse trending color combinations curated by the creative community.
+            Search and filter by warm, pastel, vibrant, and more.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <img
+              src="https://www.figma.com/api/mcp/asset/28a9cef9-7aec-4e3d-9a11-65c578a23c8b"
+              alt="Icon"
+            />
+          </div>
+          <h3 class="card-title">Export Anywhere</h3>
+          <p class="card-text">
+            Download your palettes as PNG, CSS, or JSON. Integrate seamlessly
+            with Figma, Sketch, or your development workflow.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- color generator section -->
+  <section id="generator" class="section magic">
+    <div class="container">
+      <!-- Header -->
+      <div class="magic-header">
+        <h2 class="section-title" data-node-id="22:293">See the <span class="highlight-primary">magic</span> in action</h2>
+        <p class="section-subtitle" data-node-id="22:296">Click the bowls or hit the button to stir up fresh palettes</p>
+      </div>
+    </div>
+
+    <div class="generator-window-wrapper">
+      <div class="magic-circle magic-circle-1"></div>
+      <div class="magic-circle magic-circle-2"></div>
+      <div class="magic-circle magic-circle-3"></div>
+      <div class="generator-window" data-node-id="22:297">
+        <!-- Browser chrome -->
+        <div class="browser-header">
+          <div class="browser-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="browser-url">colorsoup.app/generate</div>
+        </div>
+
+        <!-- Color strips -->
+        <div class="color-strips" data-node-id="22:307">
+          <div class="color-strip" style="background-color: #cf273d;">
+            <span class="hex-code">#CF273D</span>
+          </div>
+          <div class="color-strip" style="background-color: #a6ea54;">
+            <span class="hex-code">#A6EA54</span>
+          </div>
+          <div class="color-strip" style="background-color: #3f911f;">
+            <span class="hex-code">#3F911F</span>
+          </div>
+          <div class="color-strip" style="background-color: #88ee20;">
+            <span class="hex-code">#88EE20</span>
+          </div>
+          <div class="color-strip" style="background-color: #16c4c4;">
+            <span class="hex-code">#16C4C4</span>
+          </div>
+        </div>
+
+        <!-- Controls footer -->
+        <div class="generator-footer" data-node-id="22:328">
+          <span class="footer-text">Click a strip to change it</span>
+          <button class="btn btn-stir" id="stir-button">
+            <img src="https://www.figma.com/api/mcp/asset/42a8ce26-4220-43d6-bc8f-4aea6f13907b" alt="Refresh" class="refresh-icon" />
+            Stir New Colors
+          </button>
+        </div>
+
+        <!-- Auto-refresh text -->
+        <p class="auto-refresh-text">Auto-refreshes every 8 seconds · or <a href="#">open the full generator</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- call to action -->
+  <section class="section cta" data-node-id="22:343">
+    <div class="container cta-light">
+      <h2 class="section-title cta-title">Ready to cook up some colors?</h2>
+      <p class="section-subtitle">Join thousands of designers using ColorSoup to create beautiful palettes.</p>
+      <a href="generator.html" class="btn btn-primary btn-lg generate-btn">Start Creating Colors</a>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="footer" data-node-id="22:399">
+    <!-- CTA section inside footer -->
+    <div class="footer-cta" data-node-id="22:401">
+      <div class="container">
+        <h3 class="footer-cta-title">Ready to dive into color?</h3>
+        <p class="footer-cta-subtitle">Start your palette journey now.</p>
+        <a href="generator.html" class="btn btn-primary btn-lg">Start Creating Colors</a>
+      </div>
+    </div>
+
+    <!-- Footer content -->
+    <div class="footer-content" data-node-id="22:408">
+      <div class="container footer-container">
+        <!-- Logo and description -->
+        <div class="footer-col">
+          <div class="footer-logo">
+            <div class="logo-icon">
+              <img src="https://www.figma.com/api/mcp/asset/8405d861-100b-4a39-bebd-5254fe3fa550" alt="Palette" />
+            </div>
+            <span>Color<span class="footer-logo-highlight">Soup</span></span>
+          </div>
+          <p class="footer-description">AI-powered color palette generator. Create, explore, and share beautiful color combinations.</p>
+        </div>
+
+        <!-- Product links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Product</h4>
+          <ul class="footer-links">
+            <li><a href="#">Generate Palettes</a></li>
+            <li><a href="#">Explore</a></li>
+            <li><a href="#">AI Assistant</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#">Color Theory</a></li>
+            <li><a href="#">Design Blog</a></li>
+            <li><a href="#">API Docs</a></li>
+          </ul>
+        </div>
+
+        <!-- Social links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Connect</h4>
+          <div class="footer-social">
+            <a href="#" class="social-icon">
+              <img src="https://www.figma.com/api/mcp/asset/ef3c22bc-efe1-4efb-acac-4a93ec46db56" alt="Twitter" />
+            </a>
+            <a href="#" class="social-icon">
+              <img src="https://www.figma.com/api/mcp/asset/d0b5319f-5ca6-45e8-8bff-b09e6f08ce57" alt="GitHub" />
+            </a>
+            <a href="#" class="social-icon">
+              <img src="https://www.figma.com/api/mcp/asset/e0835428-8c93-48e9-b400-e7cafc90fc1d" alt="Instagram" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p class="copyright">© 2026 ColorSoup. All rights reserved.</p>
+        <p class="made-with">Made with <img src="https://www.figma.com/api/mcp/asset/14960d1c-c28c-49b5-a9eb-df938077d190" alt="Heart" class="heart-icon" /> for creators</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
 </body>
 </html>
