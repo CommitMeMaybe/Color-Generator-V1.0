@@ -1967,6 +1967,350 @@ body {
   object-fit: contain;
 }
 
+/* Interactions & Animations */
+
+/* Logo Hover */
+.logo-button {
+  transition: transform 0.2s;
+}
+.logo-link:hover .logo-button {
+  transform: scale(1.1);
+}
+
+/* Nav Links */
+.nav-links a {
+  transition: all 0.2s ease;
+}
+.nav-links a:hover {
+  color: #0095b6;
+  background-color: #f9fafb;
+}
+.nav-link-active {
+  background-color: rgba(0, 149, 182, 0.1);
+  color: #0095b6;
+}
+
+/* Badge hover */
+.announcement-link {
+  transition: text-decoration 0.2s ease;
+}
+.announcement-link:hover {
+  text-decoration: none;
+}
+
+/* CTA Buttons */
+.btn-primary {
+  transition: all 0.3s ease;
+}
+.hero-cta .btn-primary:hover,
+.footer-cta .btn-primary:hover {
+  filter: brightness(0.9);
+  box-shadow: 0 25px 30px rgba(0, 149, 182, 0.35);
+  transform: scale(1.05);
+}
+.hero-cta .btn-primary:active,
+.footer-cta .btn-primary:active {
+  transform: scale(0.95);
+}
+.btn-secondary {
+  transition: color 0.3s ease;
+}
+.btn-secondary:hover {
+  color: #0095b6;
+}
+.btn-secondary .btn-icon {
+  transition: transform 0.3s ease;
+}
+.btn-secondary:hover .btn-icon {
+  transform: translateX(4px);
+}
+
+/* Trusted By */
+.trusted-by {
+  padding: 3rem 0;
+  text-align: center;
+}
+.trusted-logos {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.trusted-company {
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #d1d5db;
+  transition: color 0.3s ease;
+  opacity: 0;
+}
+.trusted-company:hover {
+  color: #0095b6;
+}
+
+/* Feature Cards */
+.card {
+  transition: all 0.3s ease;
+}
+.card:hover {
+  border-color: rgba(0, 149, 182, 0.2);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 149, 182, 0.05),
+    0 8px 10px -6px rgba(0, 149, 182, 0.05);
+}
+.card-icon {
+  transition: transform 0.3s ease;
+}
+.card:hover .card-icon {
+  transform: scale(1.1);
+}
+
+/* Live Palette Demo Hover & Regenerate */
+.color-strip {
+  position: relative;
+  overflow: hidden;
+  transform-origin: bottom;
+}
+.color-strip-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.color-strip:hover .color-strip-overlay {
+  opacity: 1;
+}
+.color-strip-overlay img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+.copy-feedback {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 10;
+}
+.copy-feedback.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.hex-code {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  display: inline-block;
+  z-index: 2;
+  position: relative;
+}
+.hex-code:hover {
+  transform: scale(1.1);
+}
+
+.btn-stir {
+  transition: all 0.3s ease;
+}
+.btn-stir:hover {
+  background-color: #007a99;
+  transform: scale(1.05);
+}
+.btn-stir:active {
+  transform: scale(0.95);
+}
+
+/* Floating accent dots */
+.generator-window-wrapper {
+  position: relative;
+}
+.accent-dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  transition: background 0.3s;
+}
+.accent-dot.dot-1 {
+  width: 24px;
+  height: 24px;
+  top: -10px;
+  right: -20px;
+  animation:
+    float-dot-1 3s ease-in-out infinite,
+    fadeIn 0.5s;
+  z-index: 10;
+}
+.accent-dot.dot-2 {
+  width: 16px;
+  height: 16px;
+  bottom: 20px;
+  left: -25px;
+  animation:
+    float-dot-2 2.5s ease-in-out infinite 0.5s,
+    fadeIn 0.5s;
+  z-index: 10;
+}
+.accent-dot.dot-3 {
+  width: 20px;
+  height: 20px;
+  top: 40%;
+  right: -30px;
+  animation:
+    float-dot-3 2s ease-in-out infinite 1s,
+    fadeIn 0.5s;
+  z-index: 10;
+}
+
+@keyframes float-dot-1 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes float-dot-2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes float-dot-3 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Footer */
+.footer-cta .btn-primary {
+  transition: all 0.3s ease;
+}
+.footer-links a {
+  transition: color 0.3s ease;
+}
+.footer-links a:hover {
+  color: #0095b6;
+}
+.social-icon {
+  transition: background-color 0.2s ease;
+}
+.social-icon:hover {
+  background-color: #0095b6;
+}
+
+/* Global Animations */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeSlideUp25 {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeSlideUp30 {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes scaleXIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes stripScaleIn {
+  from {
+    opacity: 0;
+    transform: scaleY(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Visibility animation utility classes */
+.opacity-0 {
+  opacity: 0;
+}
+.animate-mount-badge {
+  animation: fadeSlideUp 0.5s ease-out forwards;
+}
+.animate-mount-title {
+  animation: fadeSlideUp25 0.6s ease-out 0.1s both;
+}
+.animate-scaleX {
+  transform-origin: left;
+  animation: scaleXIn 0.5s ease-out 0.8s both;
+}
+.animate-mount-cta {
+  animation: fadeSlideUp 0.5s ease-out 0.35s both;
+}
+.animate-in-view {
+  animation: fadeSlideUp 0.5s ease-out forwards;
+  opacity: 1 !important;
+}
+.animate-in-view-30 {
+  animation: fadeSlideUp30 0.5s ease-out forwards;
+  opacity: 1 !important;
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 1 !important;
+}
+.strip-animating {
+  animation: stripScaleIn 0.4s ease-out forwards;
+  transform-origin: bottom;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .grid {
