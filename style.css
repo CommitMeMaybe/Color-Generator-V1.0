@@ -128,16 +128,17 @@ body {
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: linear-gradient(
-    180deg,
-    var(--primary) 0%,
-    var(--primary-dark) 100%
-  );
-  border-radius: 8px;
+  background: linear-gradient(135deg, #0095b6 0%, #007a95 100%);
+  border-radius: 12px;
   box-shadow:
-    0px 10px 15px rgba(0, 149, 182, 0.2),
-    0px 4px 6px rgba(0, 149, 182, 0.2);
+    0 20px 25px -5px rgba(0, 149, 182, 0.2),
+    0 10px 10px -5px rgba(0, 149, 182, 0.2);
   flex-shrink: 0;
+  transition: transform 200ms ease;
+}
+
+.logo-button:hover {
+  transform: scale(1.1);
 }
 
 .logo-icon-image {
@@ -738,19 +739,20 @@ body {
 .card-icon {
   width: 48px;
   height: 48px;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    180deg,
-    var(--primary) 0%,
-    var(--primary-dark) 100%
-  );
-  border-radius: 14px;
+  background: linear-gradient(135deg, #0095b6 0%, #007a95 100%);
+  border-radius: 12px;
   box-shadow:
-    0px 10px 15px rgba(0, 149, 182, 0.2),
-    0px 4px 6px rgba(0, 149, 182, 0.2);
+    0 20px 25px -5px rgba(0, 149, 182, 0.2),
+    0 10px 10px -5px rgba(0, 149, 182, 0.2);
+  transition: transform 300ms ease;
+}
+
+.card:hover .card-icon {
+  transform: scale(1.1);
 }
 
 .card-icon img {
@@ -1712,27 +1714,29 @@ body {
   justify-items: center;
 }
 
-.bowl-item {
+.bowl-card {
   width: 100%;
   max-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.bowl-item {
+  width: 100%;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-.bowl-item:hover {
+.bowl-card:hover .bowl-item {
   transform: translateY(-8px);
-}
-
-.bowl-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
 }
 
 .bowl-visual {
   width: 100%;
-  padding-bottom: 66%; /* Maintain approx aspect ratio of the SVG */
+  padding-bottom: 66%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1747,13 +1751,7 @@ body {
   height: 100%;
 }
 
-.bowl-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.bowl-controls {
+.bowl-card-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1761,16 +1759,23 @@ body {
   width: 100%;
 }
 
-.color-value {
+.color-hex {
   font-family: "Space Grotesk", sans-serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.7px;
   text-transform: uppercase;
   color: #364153;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.btn-copy {
+.color-hex:hover {
+  color: var(--primary);
+  transform: scale(1.05);
+}
+
+.lock-btn {
   background: #f3f4f6;
   border: none;
   width: 26px;
@@ -1781,17 +1786,16 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #364153;
+  padding: 6px;
 }
 
-.btn-copy:hover {
+.lock-btn:hover {
   background: #e5e7eb;
   transform: scale(1.1);
 }
 
-.btn-copy svg {
-  width: 14px;
-  height: 14px;
+.bowl-card.locked .lock-btn {
+  background: rgba(0, 149, 182, 0.1);
 }
 
 /* Soup Footer */

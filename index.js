@@ -181,61 +181,6 @@ let autoRegenerateInterval = setInterval(() => {
   }
 }, 8000);
 
-// Palette Gallery Interactions
-// Handle palette action buttons (like and copy)
-const actionButtons = document.querySelectorAll(".action-btn");
-actionButtons.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const action = btn.getAttribute("data-action");
-
-    if (action === "like") {
-      btn.style.transform = "scale(0.9)";
-      setTimeout(() => {
-        btn.style.transform = "scale(1)";
-      }, 100);
-    } else if (action === "copy") {
-      // Get all color hex values from the palette card
-      const card = btn.closest(".palette-card");
-      const hexCodes = Array.from(card.querySelectorAll(".color-hex"))
-        .map((el) => el.textContent)
-        .join(", ");
-
-      // Copy to clipboard
-      navigator.clipboard.writeText(hexCodes).then(() => {
-        btn.textContent = "✓";
-        setTimeout(() => {
-          btn.textContent = "📋";
-        }, 1500);
-      });
-    }
-  });
-});
-
-// Handle filter tag buttons
-const tagButtons = document.querySelectorAll(".tag-btn");
-tagButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    btn.classList.toggle("active");
-  });
-});
-
-// Search functionality
-const searchInput = document.querySelector(".search-box input");
-if (searchInput) {
-  searchInput.addEventListener("input", (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    const paletteCards = document.querySelectorAll(".palette-card");
-
-    paletteCards.forEach((card) => {
-      const title = card
-        .querySelector(".palette-title")
-        .textContent.toLowerCase();
-      const isVisible = title.includes(searchTerm);
-      card.style.display = isVisible ? "block" : "none";
-    });
-  });
-}
 
 // Intersection Observers for Scroll Animations
 document.addEventListener("DOMContentLoaded", () => {

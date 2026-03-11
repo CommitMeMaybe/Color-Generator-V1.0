@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         hexes.some((hex) => hex.includes(searchText));
 
       if (matchesFilter && matchesSearch) {
-        card.style.display = "flex";
+        card.style.display = ""; // Reset to CSS default (avoiding flex skew)
         card.style.opacity = "0";
         setTimeout(() => {
           card.style.opacity = "1";
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Action Buttons (Copy/Like) - Prevent default for demo
+  // Action Buttons (Copy)
   document.querySelectorAll(".action-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -82,16 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.clipboard.writeText(hexes).then(() => {
           showToast(`Copied ${paletteTitle} hex codes!`);
         });
-      } else if (action === "like") {
-        btn.classList.toggle("liked");
-        const heartPath = btn.querySelector("path");
-        if (btn.classList.contains("liked")) {
-          heartPath.setAttribute("fill", "#EF4444");
-          heartPath.setAttribute("stroke", "#EF4444");
-        } else {
-          heartPath.setAttribute("fill", "none");
-          heartPath.setAttribute("stroke", "#99A1AF");
-        }
       }
     });
   });

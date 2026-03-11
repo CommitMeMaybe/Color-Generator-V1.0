@@ -73,30 +73,44 @@ function randomHex() {
 
 // Generate a palette of colors based on harmony mode
 function generatePalette() {
-  const palette = [];
+  const newPalette = [];
 
   if (currentHarmony === "random") {
     for (let i = 0; i < COLORS_COUNT; i++) {
-      palette.push(randomHex());
+      if (currentPalette[i] && currentPalette[i].locked) {
+        newPalette.push(currentPalette[i]);
+      } else {
+        newPalette.push({ color: randomHex(), locked: false });
+      }
     }
   } else {
-    // Generate base color
-    const baseHex = randomHex();
+    // For harmony modes, we need a base color.
+    // If any color is locked, use the first locked color as base.
+    // Otherwise, generate a random base.
+    let baseHex;
+    const firstLocked = currentPalette.find((p) => p.locked);
+    if (firstLocked) {
+      baseHex = firstLocked.color;
+    } else {
+      baseHex = randomHex();
+    }
+
     const [baseH, baseS, baseL] = hexToHSL(baseHex);
+    const generatedColors = [];
 
     switch (currentHarmony) {
       case "analogous":
-        palette.push(baseHex);
-        palette.push(hslToHex((baseH + 30) % 360, baseS, baseL));
-        palette.push(hslToHex((baseH - 30 + 360) % 360, baseS, baseL));
-        palette.push(hslToHex((baseH + 60) % 360, baseS, baseL));
-        palette.push(hslToHex((baseH - 60 + 360) % 360, baseS, baseL));
+        generatedColors.push(baseHex);
+        generatedColors.push(hslToHex((baseH + 30) % 360, baseS, baseL));
+        generatedColors.push(hslToHex((baseH - 30 + 360) % 360, baseS, baseL));
+        generatedColors.push(hslToHex((baseH + 60) % 360, baseS, baseL));
+        generatedColors.push(hslToHex((baseH - 60 + 360) % 360, baseS, baseL));
         break;
       case "complementary":
-        palette.push(baseHex);
-        palette.push(hslToHex((baseH + 180) % 360, baseS, baseL));
+        generatedColors.push(baseHex);
+        generatedColors.push(hslToHex((baseH + 180) % 360, baseS, baseL));
         for (let i = 2; i < COLORS_COUNT; i++) {
-          palette.push(
+          generatedColors.push(
             hslToHex(
               (baseH + Math.random() * 360) % 360,
               baseS,
@@ -106,42 +120,52 @@ function generatePalette() {
         }
         break;
       case "triadic":
-        palette.push(baseHex);
-        palette.push(hslToHex((baseH + 120) % 360, baseS, baseL));
-        palette.push(hslToHex((baseH + 240) % 360, baseS, baseL));
-        palette.push(hslToHex((baseH + 60) % 360, baseS, baseL + 10));
-        palette.push(hslToHex((baseH + 180) % 360, baseS, baseL - 10));
+        generatedColors.push(baseHex);
+        generatedColors.push(hslToHex((baseH + 120) % 360, baseS, baseL));
+        generatedColors.push(hslToHex((baseH + 240) % 360, baseS, baseL));
+        generatedColors.push(hslToHex((baseH + 60) % 360, baseS, baseL + 10));
+        generatedColors.push(hslToHex((baseH + 180) % 360, baseS, baseL - 10));
         break;
       case "split-comp":
-        palette.push(baseHex);
-        palette.push(hslToHex((baseH + 150) % 360, baseS, baseL));
-        palette.push(hslToHex((baseH + 210) % 360, baseS, baseL));
-        palette.push(hslToHex((baseH + 30) % 360, baseS, baseL + 10));
-        palette.push(hslToHex((baseH - 30 + 360) % 360, baseS, baseL - 10));
+        generatedColors.push(baseHex);
+        generatedColors.push(hslToHex((baseH + 150) % 360, baseS, baseL));
+        generatedColors.push(hslToHex((baseH + 210) % 360, baseS, baseL));
+        generatedColors.push(hslToHex((baseH + 30) % 360, baseS, baseL + 10));
+        generatedColors.push(
+          hslToHex((baseH - 30 + 360) % 360, baseS, baseL - 10),
+        );
         break;
       case "tetradic":
-        palette.push(baseHex);
-        palette.push(hslToHex((baseH + 90) % 360, baseS, baseL));
-        palette.push(hslToHex((baseH + 180) % 360, baseS, baseL));
-        palette.push(hslToHex((baseH + 270) % 360, baseS, baseL));
-        palette.push(hslToHex((baseH + 45) % 360, baseS, baseL + 5));
+        generatedColors.push(baseHex);
+        generatedColors.push(hslToHex((baseH + 90) % 360, baseS, baseL));
+        generatedColors.push(hslToHex((baseH + 180) % 360, baseS, baseL));
+        generatedColors.push(hslToHex((baseH + 270) % 360, baseS, baseL));
+        generatedColors.push(hslToHex((baseH + 45) % 360, baseS, baseL + 5));
         break;
       case "monochromatic":
         for (let i = 0; i < COLORS_COUNT; i++) {
           const lightness = baseL + (i - 2) * 15;
-          palette.push(
+          generatedColors.push(
             hslToHex(baseH, baseS, Math.max(10, Math.min(90, lightness))),
           );
         }
         break;
       default:
         for (let i = 0; i < COLORS_COUNT; i++) {
-          palette.push(randomHex());
+          generatedColors.push(randomHex());
         }
+    }
+
+    for (let i = 0; i < COLORS_COUNT; i++) {
+      if (currentPalette[i] && currentPalette[i].locked) {
+        newPalette.push(currentPalette[i]);
+      } else {
+        newPalette.push({ color: generatedColors[i], locked: false });
+      }
     }
   }
 
-  return palette;
+  return newPalette;
 }
 
 // Create SVG bowl visualization
@@ -219,40 +243,65 @@ function renderBowls() {
   if (!container) return;
   container.innerHTML = "";
 
-  currentPalette.forEach((color, index) => {
-    const bowl = document.createElement("div");
-    bowl.className = "bowl-item";
-    bowl.innerHTML = `
-      <div class="bowl-wrapper">
+  currentPalette.forEach((item, index) => {
+    const bowlCard = document.createElement("div");
+    bowlCard.className = `bowl-card ${item.locked ? "locked" : ""}`;
+    bowlCard.dataset.index = index;
+
+    const lockIcon = `
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_50_829_${index})">
+    <path d="M11.0774 6.41321H2.91507C2.27108 6.41321 1.74902 6.93526 1.74902 7.57925V11.6604C1.74902 12.3044 2.27108 12.8265 2.91507 12.8265H11.0774C11.7214 12.8265 12.2434 12.3044 12.2434 11.6604V7.57925C12.2434 6.93526 11.7214 6.41321 11.0774 6.41321Z" stroke="${item.locked ? "var(--primary)" : "#99A1AF"}" stroke-width="1.16604" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4.08106 6.41322V4.08113C4.08033 3.35821 4.34824 2.66081 4.83279 2.12432C5.31734 1.58782 5.98394 1.2505 6.7032 1.17785C7.42246 1.1052 8.14306 1.30239 8.72511 1.73115C9.30715 2.15991 9.70912 2.78965 9.85298 3.49811" stroke="${item.locked ? "var(--primary)" : "#99A1AF"}" stroke-width="1.16604" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_50_829_${index}">
+      <rect width="13.9925" height="13.9925" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>`;
+
+    bowlCard.innerHTML = `
+      <div class="bowl-item">
         <div class="bowl-visual">
-          ${createBowlSVG(color, index)}
+          ${createBowlSVG(item.color, index)}
         </div>
-        <div class="bowl-controls">
-          <div class="color-value">${color}</div>
-          <button class="btn btn-copy" data-color="${color}" title="Copy color">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M9 11h6v6H9z" fill="currentColor"/>
-            </svg>
-          </button>
-        </div>
+      </div>
+      <div class="bowl-card-footer">
+        <span class="color-hex" title="Click to copy">${item.color}</span>
+        <button class="lock-btn" title="Lock color">
+          ${lockIcon}
+        </button>
       </div>
     `;
 
-    container.appendChild(bowl);
+    container.appendChild(bowlCard);
 
-    // Add copy to clipboard functionality
-    const copyBtn = bowl.querySelector(".btn-copy");
-    copyBtn.addEventListener("click", (e) => {
+    // Lock toggle functionality
+    const lockBtn = bowlCard.querySelector(".lock-btn");
+    lockBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-      copyToClipboard(color);
+      toggleLock(index);
     });
 
-    // Click on bowl to copy color
-    bowl.addEventListener("click", () => {
-      copyToClipboard(color);
+    // Hex copy functionality
+    const hexLabel = bowlCard.querySelector(".color-hex");
+    hexLabel.addEventListener("click", (e) => {
+      e.stopPropagation();
+      copyToClipboard(item.color);
+    });
+
+    // Card click (fallback copy)
+    bowlCard.addEventListener("click", () => {
+      copyToClipboard(item.color);
     });
   });
+}
+
+// Toggle lock state
+function toggleLock(index) {
+  currentPalette[index].locked = !currentPalette[index].locked;
+  renderBowls();
 }
 
 // Copy color to clipboard
@@ -327,7 +376,7 @@ function init() {
   });
 }
 
-// Export as PNG
+// Export functions (PNG, SVG, CSS, JSON)
 function exportAsPNG() {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
@@ -346,12 +395,12 @@ function exportAsPNG() {
   ctx.fillRect(0, 0, width, height);
 
   // Draw colors
-  currentPalette.forEach((color, index) => {
+  currentPalette.forEach((item, index) => {
     const x = padding + index * (colorSize + gap);
     const y = padding;
 
     // Color square
-    ctx.fillStyle = color;
+    ctx.fillStyle = item.color;
     ctx.fillRect(x, y, colorSize, colorSize);
 
     // Border
@@ -363,7 +412,7 @@ function exportAsPNG() {
     ctx.fillStyle = "#333";
     ctx.font = "11px Poppins";
     ctx.textAlign = "center";
-    ctx.fillText(color, x + colorSize / 2, y + colorSize + 15);
+    ctx.fillText(item.color, x + colorSize / 2, y + colorSize + 15);
   });
 
   const link = document.createElement("a");
@@ -374,7 +423,6 @@ function exportAsPNG() {
   document.body.removeChild(link);
 }
 
-// Export as SVG
 function exportAsSVG() {
   const colorSize = 80;
   const gap = 10;
@@ -383,23 +431,23 @@ function exportAsSVG() {
   const width = currentPalette.length * (colorSize + gap) + padding * 2;
   const height = colorSize + padding * 2 + 30;
 
-  let svg = `<?xml version="1.0" encoding="UTF-8"?>
+  let svgContent = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
   <rect width="${width}" height="${height}" fill="#fafafa"/>`;
 
-  currentPalette.forEach((color, index) => {
+  currentPalette.forEach((item, index) => {
     const x = padding + index * (colorSize + gap);
     const y = padding;
 
-    svg += `
-  <rect x="${x}" y="${y}" width="${colorSize}" height="${colorSize}" fill="${color}" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="${x + colorSize / 2}" y="${y + colorSize + 20}" font-family="Poppins" font-size="11" text-anchor="middle" fill="#333">${color}</text>`;
+    svgContent += `
+  <rect x="${x}" y="${y}" width="${colorSize}" height="${colorSize}" fill="${item.color}" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="${x + colorSize / 2}" y="${y + colorSize + 20}" font-family="Poppins" font-size="11" text-anchor="middle" fill="#333">${item.color}</text>`;
   });
 
-  svg += `
+  svgContent += `
 </svg>`;
 
-  const blob = new Blob([svg], { type: "image/svg+xml" });
+  const blob = new Blob([svgContent], { type: "image/svg+xml" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
@@ -410,15 +458,13 @@ function exportAsSVG() {
   URL.revokeObjectURL(url);
 }
 
-// Export as CSS Variables
 function exportAsCSS() {
   let css = ":root {\n";
-  currentPalette.forEach((color, index) => {
-    css += `  --color-${index + 1}: ${color};\n`;
+  currentPalette.forEach((item, index) => {
+    css += `  --color-${index + 1}: ${item.color};\n`;
   });
   css += "}";
 
-  // Copy to clipboard
   navigator.clipboard
     .writeText(css)
     .then(() => {
@@ -426,21 +472,11 @@ function exportAsCSS() {
       notification.className = "copy-notification";
       notification.textContent = "CSS variables copied!";
       document.body.appendChild(notification);
-
-      setTimeout(() => {
-        notification.classList.add("show");
-      }, 10);
-
-      setTimeout(() => {
-        notification.classList.remove("show");
-      }, 2000);
-
-      setTimeout(() => {
-        notification.remove();
-      }, 2300);
+      setTimeout(() => notification.classList.add("show"), 10);
+      setTimeout(() => notification.classList.remove("show"), 2000);
+      setTimeout(() => notification.remove(), 2300);
     })
     .catch(() => {
-      // Fallback: download as file
       const blob = new Blob([css], { type: "text/css" });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
@@ -453,10 +489,9 @@ function exportAsCSS() {
     });
 }
 
-// Download palette as JSON
 function downloadPalette() {
   const data = {
-    colors: currentPalette,
+    colors: currentPalette.map((p) => p.color),
     created: new Date().toISOString(),
   };
 
@@ -472,7 +507,6 @@ function downloadPalette() {
   URL.revokeObjectURL(url);
 }
 
-// Handle export options
 function handleExport(format) {
   switch (format) {
     case "png":
@@ -497,32 +531,25 @@ function setupHarmonySelector() {
   const harmonyOptions = document.querySelectorAll(".harmony-option");
   const harmonyLabel = document.getElementById("harmony-label");
 
-  // Toggle dropdown
   harmonyBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     harmonyDropdown.classList.toggle("show");
   });
 
-  // Handle harmony selection
   harmonyOptions.forEach((option) => {
     option.addEventListener("click", () => {
       const harmony = option.dataset.harmony;
       currentHarmony = harmony;
-
-      // Update UI
       harmonyOptions.forEach((opt) => opt.classList.remove("selected"));
       option.classList.add("selected");
       harmonyLabel.textContent =
         option.querySelector(".option-name").textContent;
       harmonyDropdown.classList.remove("show");
-
-      // Generate new palette
       currentPalette = generatePalette();
       renderBowls();
     });
   });
 
-  // Close dropdown when clicking outside
   document.addEventListener("click", (e) => {
     if (!e.target.closest(".harmony-selector")) {
       harmonyDropdown.classList.remove("show");
