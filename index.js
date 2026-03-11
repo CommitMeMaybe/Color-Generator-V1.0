@@ -130,7 +130,7 @@ strips.forEach((strip) => {
   if (!strip.querySelector(".color-strip-overlay")) {
     strip.insertAdjacentHTML(
       "beforeend",
-      `<div class="color-strip-overlay"><img src="https://www.figma.com/api/mcp/asset/42a8ce26-4220-43d6-bc8f-4aea6f13907b" alt="Refresh" /></div><div class="copy-feedback">Copied!</div>`,
+      `<div class="color-strip-overlay"><svg class="refresh-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg></div><div class="copy-feedback">Copied!</div>`,
     );
   }
 

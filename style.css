@@ -566,6 +566,103 @@ body {
   box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.3);
 }
 
+/* Soup Bowl Styles (hero) */
+.soup-bowl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  animation: float-sphere 3s ease-in-out infinite;
+}
+
+.soup-bowl:nth-child(1) {
+  animation-delay: 0s;
+}
+.soup-bowl:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.soup-bowl:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.soup-bowl:nth-child(4) {
+  animation-delay: 0.9s;
+}
+.soup-bowl:nth-child(5) {
+  animation-delay: 1.2s;
+}
+
+.soup-bowl:hover {
+  animation: none;
+}
+.soup-bowl:hover .bowl-wrapper {
+  transform: scale(1.08);
+}
+
+.bowl-wrapper {
+  position: relative;
+  width: 180px;
+  height: 104px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0px 10px 29px rgba(0, 0, 0, 0.18));
+}
+
+/* The colored soup surface sits behind the bowl SVG */
+.bowl-soup {
+  position: absolute;
+  bottom: 6%;
+  left: 3%;
+  right: 3%;
+  top: 38%;
+  border-radius: 0 0 50% 50%;
+  transition: background-color 0.4s ease;
+}
+
+/* The bowl SVG overlays the soup, giving the illusion of a filled bowl */
+.bowl-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.bowl-hex {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #364153;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.bowl-lock-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #6a7282;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.bowl-lock-btn:hover {
+  background: rgba(0, 149, 182, 0.1);
+  color: #0095b6;
+}
+
+.soup-bowl[data-locked="true"] .bowl-lock-btn {
+  background: rgba(0, 149, 182, 0.1);
+  color: #0095b6;
+}
+
 /* Sections */
 .section {
   padding: 4rem 0;
@@ -887,17 +984,6 @@ body {
   color: #99a1af;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-.like-count {
-  margin-left: auto;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 10px;
-  color: #99a1af;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  white-space: nowrap;
 }
 
 /* Palette Colors Grid */
@@ -1646,19 +1732,19 @@ body {
 
 .bowl-visual {
   width: 100%;
-  aspect-ratio: 16 / 11;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0px 10.44px 29.232px rgba(0, 0, 0, 0.18);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(0, 0, 0, 0.05) 100%
-  );
+  padding-bottom: 66%; /* Maintain approx aspect ratio of the SVG */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+}
+
+.bowl-visual svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .bowl-svg {
@@ -2027,21 +2113,32 @@ body {
 
 /* Trusted By */
 .trusted-by {
-  padding: 3rem 0;
+  padding: 4rem 0 2rem;
   text-align: center;
+}
+.trusted-by-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #99a1af;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
 }
 .trusted-logos {
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 4rem; /* ~64px based on spacing seen */
   flex-wrap: wrap;
   align-items: center;
 }
 .trusted-company {
-  font-family: inherit;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #d1d5db;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: -0.5px;
+  color: #d1d5dc;
   transition: color 0.3s ease;
   opacity: 0;
 }
