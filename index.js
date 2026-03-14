@@ -106,12 +106,15 @@ function updateAccentDots() {
   });
 }
 
+// detect color rows for showcase as well
+const showcaseRows = document.querySelectorAll(".color-demo-row");
+
 function colorStrip(strip, delay = 0) {
   const hex = randomHex();
 
   setTimeout(() => {
     strip.style.backgroundColor = hex;
-    const codeEl = strip.querySelector(".hex-code");
+    const codeEl = strip.querySelector(".hex-code, .color-demo-hex");
     if (codeEl) codeEl.textContent = hex;
 
     // Animation trigger
@@ -119,11 +122,13 @@ function colorStrip(strip, delay = 0) {
     void strip.offsetWidth; // trigger reflow
     strip.classList.add("strip-animating");
 
-    updateAccentDots();
+    if (strip.classList.contains("color-strip")) {
+      updateAccentDots();
+    }
   }, delay);
 }
 
-// handle all color strips
+// handle all color strips (gallery/hero compatibility)
 const strips = document.querySelectorAll(".color-strip");
 strips.forEach((strip) => {
   // Add overlays
@@ -154,14 +159,34 @@ strips.forEach((strip) => {
   }
 });
 
+// handle showcase rows
+showcaseRows.forEach((row) => {
+  row.addEventListener("click", () => {
+    colorStrip(row);
+  });
+
+  const hexLabel = row.querySelector(".color-demo-hex");
+  if (hexLabel) {
+    hexLabel.addEventListener("click", (e) => {
+      e.stopPropagation();
+      navigator.clipboard.writeText(hexLabel.textContent).then(() => {
+        // feedback could be added here if needed
+      });
+    });
+  }
+});
+
 function regenerateAllStrips() {
   strips.forEach((strip, index) => {
     colorStrip(strip, index * 60);
   });
+  showcaseRows.forEach((row, index) => {
+    colorStrip(row, index * 60);
+  });
 }
 
-// Stir button to regenerate all color strips
-const stirButton = document.getElementById("stir-button");
+// Stir button to regenerate all color strips (supports both ID and class for landing page)
+const stirButton = document.getElementById("stir-button") || document.querySelector(".btn-stir-new");
 if (stirButton) {
   stirButton.addEventListener("click", regenerateAllStrips);
 }
@@ -184,6 +209,27 @@ let autoRegenerateInterval = setInterval(() => {
 
 // Intersection Observers for Scroll Animations
 document.addEventListener("DOMContentLoaded", () => {
+  // Mobile Menu Logic
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+  if (mobileMenuBtn && mobileMenuOverlay) {
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenuBtn.classList.toggle("active");
+      mobileMenuOverlay.classList.toggle("active");
+      document.body.style.overflow = mobileMenuOverlay.classList.contains("active") ? "hidden" : "";
+    });
+
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenuBtn.classList.remove("active");
+        mobileMenuOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+    });
+  }
+
   // Add accent dots if generator wrapper exists
   const wrapper = document.querySelector(".generator-window-wrapper");
   if (wrapper && !wrapper.querySelector(".accent-dot")) {
